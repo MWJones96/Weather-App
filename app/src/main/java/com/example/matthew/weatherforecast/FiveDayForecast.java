@@ -1,12 +1,8 @@
 package com.example.matthew.weatherforecast;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.Nullable;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +11,6 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,6 +19,9 @@ import java.util.Date;
  * Created by Matthew on 21/04/2017.
  */
 
+/**Fragment that represents the 5-day forecast
+ *
+ */
 public class FiveDayForecast extends Fragment
 {
     @Override
@@ -40,6 +37,8 @@ public class FiveDayForecast extends Fragment
 
     public void update()
     {
+        /**Populates items with relevant weather data
+         */
         try
         {
             JSONObject city = new JSONObject(((MainActivity)getActivity()).w.obj.getString("city"));

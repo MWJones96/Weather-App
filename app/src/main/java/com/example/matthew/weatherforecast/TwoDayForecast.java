@@ -8,18 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Created by Matthew on 21/04/2017.
  */
 
+/**Represents the two-day forecast used by our program
+ *
+ */
 public class TwoDayForecast extends Fragment
 {
     @Override
@@ -35,6 +35,7 @@ public class TwoDayForecast extends Fragment
 
     public void update()
     {
+        //Populates fragment with the relevant data
         try {
             JSONObject city = new JSONObject(((MainActivity) getActivity()).w.obj.getString("city"));
             ((TextView) ((MainActivity) getActivity()).findViewById(R.id.location)).setText(city.getString("name") + ", " + city.getString("country"));

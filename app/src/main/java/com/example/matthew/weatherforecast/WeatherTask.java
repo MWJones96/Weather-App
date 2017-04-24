@@ -1,27 +1,15 @@
 package com.example.matthew.weatherforecast;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.media.Image;
-import android.support.annotation.IntDef;
-import android.view.SurfaceView;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Hashtable;
 
 /**
  * Created by Matthew on 22/04/2017.
  */
 
+/**Stores the two fragments and the JSONObject to be used by the other classes
+ *
+ */
 public class WeatherTask
 {
     FiveDayForecast f;

@@ -18,6 +18,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/**Map activity for getting custom location on map
+ *
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -56,9 +59,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Double lat = loc.getLatitude();
         Double lon = loc.getLongitude();
 
+        //Sets default location to user's location
         LatLng currentLoc = new LatLng(lat, lon);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon), 12.0f));
 
+        //If map is pressed, will pass lat and lon to the main activity
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
             @Override
             public void onMapClick(LatLng latLng) {

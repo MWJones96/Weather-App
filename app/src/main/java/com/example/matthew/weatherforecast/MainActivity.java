@@ -1,8 +1,6 @@
 package com.example.matthew.weatherforecast;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -11,37 +9,17 @@ import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
-import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.charset.Charset;
-import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
-
+/**Main activity representing the weather forecast view
+ *
+ */
 public class MainActivity extends AppCompatActivity
 {
     WeatherTask w;
@@ -54,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         Double lat;
         Double lon;
 
+        //By default, will get the weather at the user's current location
         if (getIntent().getExtras() == null)
         {
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -67,6 +46,7 @@ public class MainActivity extends AppCompatActivity
             lat = loc.getLatitude();
             lon = loc.getLongitude();
         }
+        //If coming back from the Map activity, changes location based on the lat and lon values returned
         else
         {
             lat = getIntent().getExtras().getDouble("lat", 0);
@@ -79,6 +59,10 @@ public class MainActivity extends AppCompatActivity
         catch(Exception e){}
     }
 
+    /**Run when the 5-day forecast button is pressed, will replace what is in the fragment box with the 5-day view
+     *
+     * @param view
+     */
     public void FiveDayClick(View view)
     {
         FragmentManager f = getFragmentManager();
@@ -88,6 +72,10 @@ public class MainActivity extends AppCompatActivity
         t.commit();
     }
 
+    /**Run when the 2-day forecast button is pressed, will replace what is in the fragment box with the 2-day view
+     *
+     * @param view
+     */
     public void TwoDayClick(View view)
     {
         FragmentManager f = getFragmentManager();
@@ -97,17 +85,28 @@ public class MainActivity extends AppCompatActivity
         t.commit();
     }
 
+    /**Creates an options menu with one option: Change Location, which opens the map activity
+     *
+     * @param menu - Our options menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**Checks which option is selected (in this case 1)
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
         {
             case R.id.map:
+                //Opens map activity to select location
                 Intent i = new Intent(this, MapsActivity.class);
                 startActivity(i);
                 this.finish();
