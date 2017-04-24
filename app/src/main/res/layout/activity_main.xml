@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:text="Fetching location..."
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:background="#000000"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:text="Fetching date..."
+        android:textSize="12dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#000000"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fiveday"
+            android:text="Five Day Forecast"
+            android:layout_weight="1"
+            android:onClick="FiveDayClick"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/twoday"
+            android:text="Two Day Forecast"
+            android:layout_weight="1"
+            android:onClick="TwoDayClick"
+            />
+    </LinearLayout>
+
+    <fragment android:id="@+id/fragment_switch" android:layout_width = "match_parent"
+              android:layout_height="match_parent"
+              android:name="com.example.matthew.weatherforecast.FiveDayForecast"
+              tools:layout="@layout/five_day" />
+
+</LinearLayout>
